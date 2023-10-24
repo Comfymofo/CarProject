@@ -5,4 +5,10 @@
 
 int Reading();
 
+void readingstart();
+
+extern int speedmotors;
+extern int forthspeed;
+
+
 #endif

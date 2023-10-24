@@ -1,10 +1,6 @@
 #include "Bluetooth.h"
 #include "MotorDrive.h"
 
-char value;
-int speedmotors = 0;
-int forthspeed = 0;
-
 void speed(int x){
   speedmotors = map(x, 0, 10, 0, 255);
 	forthspeed = speedmotors / 4;

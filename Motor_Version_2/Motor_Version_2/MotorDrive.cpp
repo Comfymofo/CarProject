@@ -1,9 +1,5 @@
 #include "MotorDrive.h"
 #include "Bluetooth.h"
-#define LeftdirPin1 3
-#define LeftdirPin2 5
-#define RightdirPin1 6
-#define RightdirPin2 9
 
 void MotorStart() {
   pinMode(LeftdirPin1, OUTPUT);
