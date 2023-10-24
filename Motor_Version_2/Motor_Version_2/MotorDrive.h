@@ -5,7 +5,7 @@
 
 void MotorStart();
 
-int speed(int x);
+void speed(int x);
 
 void left();
 
@@ -22,5 +22,6 @@ void backRight();
 void tankleft();
 
 void tankright();
+void stopmotor();
 
 #endif

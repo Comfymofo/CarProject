@@ -1,13 +1,36 @@
 #include "F567.h"
+#include <LiquidCrystal_I2C.h>
+#include <EEPROM.h>
+#include "Bluetooth.h"
 
 unsigned long previousMillis1 = 0;  
 unsigned long startTime = 0;
 unsigned long elapsedTime = 0;
 unsigned long previousTime = 0;
 unsigned long interval = 1000;
+const int buttonReset = 13;
+int buttonState,lastButtonState; 
+int selectedOption = 1; 
+int selectedMenu = 1;
+int directionMovement;
+int seconds, minutes, hours;
+const int buttonSwitch = A0;   
+const int buttonMenu = A1;
 
-void Reading() {
+LiquidCrystal_I2C lcd(0x27,16,2); 
 
+void readingstart(){
+  seconds = EEPROM.read(0);
+  minutes = EEPROM.read(1);
+  hours = EEPROM.read(2);
+  lcd.init();
+  lcd.init();
+  lcd.backlight(); 
+  pinMode(buttonSwitch, INPUT_PULLUP);
+  pinMode(buttonMenu, INPUT_PULLUP);   
+}
+
+int Reading() {
   unsigned long currentTime = millis();
 
   if (currentTime - previousTime >= interval) 
@@ -98,7 +121,7 @@ void Reading() {
     }
     lcd.setCursor(0, 1);
     lcd.print("Speed:");
-    lcd.print(speed(value));
+    // lcd.print();
     break;
     case 3:
     seconds = (seconds + (elapsedTime / 1000)) % 60;
@@ -108,4 +131,5 @@ void Reading() {
     lcd.print(String(hours / 10) + String(hours % 10) + ":" + String(minutes / 10) + String(minutes % 10) + ":" + String(seconds / 10) + String(seconds % 10));
     break;
   }
+  return selectedOption;
 }

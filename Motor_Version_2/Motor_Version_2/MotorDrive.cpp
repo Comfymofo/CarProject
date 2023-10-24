@@ -1,24 +1,15 @@
 #include "MotorDrive.h"
-
-  int speedmotors = 0;
-  int forthspeed = 0;
-
-  #define LeftdirPin1 3
-  #define LeftdirPin2 5
-  #define RightdirPin1 6
-  #define RightdirPin2 9
+#include "Bluetooth.h"
+#define LeftdirPin1 3
+#define LeftdirPin2 5
+#define RightdirPin1 6
+#define RightdirPin2 9
 
 void MotorStart() {
   pinMode(LeftdirPin1, OUTPUT);
   pinMode(LeftdirPin2, OUTPUT);
   pinMode(RightdirPin1, OUTPUT);
   pinMode(RightdirPin2, OUTPUT);
-}
-
-int speed(int x){
-  speedmotors = map(x, 0, 9, 0, 255);
-	forthspeed = speedmotors / 4;
-  return speedmotors;
 }
 
 void left(){
@@ -75,3 +66,9 @@ void tankright(){
   analogWrite(LeftdirPin1, speedmotors);
   digitalWrite(LeftdirPin2, 0); 
 } 
+void stopmotor(){
+  digitalWrite(RightdirPin1, 0);
+  digitalWrite(RightdirPin2, 0);  
+  digitalWrite(LeftdirPin1, 0);
+  digitalWrite(LeftdirPin2, 0); 
+}
