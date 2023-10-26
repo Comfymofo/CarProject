@@ -135,7 +135,7 @@ void loop()
     }
     lcd.setCursor(0, 1);
     lcd.print("Speed:");
-    // lcd.print(speedmotors);
+    lcd.print(speedmotors);
     break;
     case 3:
     if (savelock == 1)

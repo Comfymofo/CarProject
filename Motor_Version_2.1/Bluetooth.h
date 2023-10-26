@@ -3,11 +3,15 @@
 
 #include <Arduino.h>
 
-int speedmotors = 0;
-int forthspeed = 0;
-char value;
+extern char value;
+extern int speedmotors;
+extern int forthspeed;
+
+int data(int y);
 
 void speed(int x);
+
+void readingstart();
 
 void RemoteMode();
 
